@@ -24,24 +24,42 @@ function App() {
     setTimeout(() => {
       setAlert(null);
     }, 1500);
+
   }
 
-  const toggleMode = () => {
-    if (mode === 'light') {
-      setMode('dark');
-      document.body.style.backgroundColor = '#343a40';
-      makeAlert("dark mode enabled", "success");
-    }
-    else {
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-    }
+  // const toggleMode = () => {
+  //   if (mode === 'light') {
+  //     setMode('dark');
+  //     document.body.style.backgroundColor = '#343a40';
+  //     makeAlert("dark mode enabled", "success");
+  //   }
+  //   else {
+  //     setMode('light');
+  //     document.body.style.backgroundColor = 'white';
+  //   }
+  // }
+  const setLightMode = ()=>{
+    setMode('light');
+    document.body.style.backgroundColor = 'white';
+    makeAlert("light mode enabled", "success");
+  }
+
+  const setDarkMode = ()=>{
+    setMode('dark');
+    document.body.style.backgroundColor = '#343a40';
+    makeAlert("dark mode enabled", "success");
+  }
+
+  const setBlueMode = ()=>{
+    setMode('dark');
+    document.body.style.backgroundColor = '#131e2a';
+    makeAlert("blue-dark mode enabled", "success");
   }
   return (
     <>
       <Router>
         <div className='container my-3'>
-          <Navbar title="Navbar" mode={mode} toggleMode={toggleMode} />
+          <Navbar title="Navbar" mode={mode}  setDarkMode={setDarkMode} setLightMode={setLightMode} setBlueMode={setBlueMode}/>
           <Alerts alert={alert} />
           <Routes>
             <Route exact path="/about" element={<AboutPage mode={mode}/>}>
